@@ -1,0 +1,63 @@
+based-num -> num base-char 
+bases-num.val = num.val
+num.base = base-char.value
+
+base-char -> o
+base-char.val = 8
+
+base-char -> d
+base-char.val = 10
+
+num1 -> num2 digit
+num1.val = digit.val + num2.val*num1.base
+digit.base = num1.base
+num2.base = num1.base
+
+num -> digit
+num.val = if digit.error then error else digit.val
+digit.base = num.base
+
+digit -> 0 | 1 | 2 | ... | 7
+digit.val = 0
+digit.val = 1
+digit.val = 2
+...
+digit.val = 7
+
+digit -> 8 | 9
+digit.val = 8 if digit.base == d else error
+digit.val = 9 if digit.base == d else error
+
+
+			based-num
+			val = 83
+			/       \
+		num        base-char
+		val=83     val = o
+		base=o         |
+		/ \            |
+	num   digit        o
+	val=10 val=3
+	/ |       |
+num   digit   3
+val=1 val=2
+ |     |
+digit  2
+val=1
+ |
+ 1
+
+e)
+
+
+
+
+
+
+
+
+
+
+
+
+

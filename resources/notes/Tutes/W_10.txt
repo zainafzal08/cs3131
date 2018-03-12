@@ -1,0 +1,82 @@
+General Notes
+
+jasmin has labels/metadata and actual instructions
+
+```jasmin
+.source Test.java
+.class Test
+.super java/lang/Object
+
+// the <init> means constructor the () is params
+// it takes in none, and V is that it returns void
+.method <init>()V 
+.limit stack 1
+.limit locals 1
+.var 0 is this LTest; from Label0 to Label1 // ; is a comment
+
+Label0:
+.line1 //info for a debugger so it can tell what assembly corresponds to what line
+    aload_0 // push on "this" onto the stack so the init function knows!
+    invokespecial java/lang/Object/<init>()V // call constructer for a object
+Label1:
+    return
+.end method
+
+.method fi(II)I
+.limit stack 2
+.limit locals 3
+.var 0 is this LTest; from Label1 to Label2
+.var 1 is arg0 I from Label1 to Label2
+.var 2 is arg1 I from Label1 to Label2
+Label1:
+.line 4
+    iload_1
+    iload_2
+    if_icmpge Label0
+.line 5
+    iconst_1
+    1
+    ireturn
+Label0:
+.line 7
+    iconst_2
+Label2:
+    ireturn // int return
+.end method
+
+.method ff(FZ)Z
+.limit stack 4
+.limit locals 3
+.var 0 is this LTest; from Label4 to Label3
+.var 1 is arg0 F from Label4 to Label3
+.var 2 is arg1 Z from Label4 to Label3
+
+Label4:
+.line 11
+    fload_1 // load var 1 as a float
+    f2d // convert flaot the a double so we can do i >= 1.0 as 1.0 is a double
+    dconst_1 // push the double '1' into the stack
+    // compare top 2 registers and push 1 or 0 onto 
+    // the stack depending on the comparison.
+    // l can be g for less then or greater then
+    dcmpl
+    iflt Label0
+    iload_2
+    ifeq Label0
+.line 12
+    iload_2
+    ireturn
+.line 14
+    iload_2
+    ifne Label2
+    iconst_1
+    goto Label3
+Label2:
+    iconst_0
+Label3:
+    ireturn
+ it goes on ....
+
+```
+
+note a capital L means label. 

@@ -1,0 +1,46 @@
+false and true or not (true)
+-----------------------------------
+		    bexpr
+		/     |     \
+	bexpr     or     bterm
+	  |                |
+	bterm            bfac
+   /  |  \            / \
+bterm and bfac      not   bfac
+  |         |           /  |   \
+bfac       true        ( bexpr  )
+  |                        |
+ false                   bterm
+                           |
+                         bfactor
+                           |
+                         true
+------------------------------------
+
+bexpr → bterm (or bterm)*
+bterm → bfactor (and bfactor)*
+bfactor → not bfactor
+      | ”(” bexpr ”)”
+	  | true
+      | false
+
+-------------------------------------
+
+ 		      <bexpr>
+ 		/        |        \
+ 	 <Expr>     "or"      <Expr>
+   /   |    \			  /     \ 
+<Expr> "and" <Expr>      <op>    <Expr>
+  |            |          |        |
+ false        true        not      true
+
+not sure about the statements
+
+-------------------------------------
+
+
+
+
+
+
+

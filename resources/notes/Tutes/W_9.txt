@@ -1,0 +1,41 @@
+// function is at level 1
+// f and i arguments are at 2
+void f(float f, int i) {
+    // 2, also error, i already exists
+	float i;
+    // 2
+	int j;
+	{
+        // 3
+    	int f;
+        // 3
+    	int main;
+	}
+}
+
+// main at level 1
+// main must return int in our language spec
+void main() {
+	f(1,2.0); // 1 can be converted to a flaot but 2.0 can't be pushed to a int
+}
+
+
+GRAMMA!!
+
+stmt-list → stmt-list stmt      :  -
+stmt-list → stmt                :  -
+stmt → id = expr                :  if(id.type != expr.type) raise_error()
+expr → expr + expr              :  if(e2.type != int || e3.type != int)
+                                    raise_error()
+                                    e1.type = int_type
+expr → expr and expr            :  if(e2.type != bool || e3.type != bool)
+                                    raise_error()
+                                    e1.type = bool
+expr → id                       :  expr.type = id.type
+expr → num                      :  expr.type = int
+expr → true                     :  expr.type = bool
+expr → false                    :  expr.type = bool
+
+
+
+

@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "" > COMP3131.md
+for i in $(ls src/Lecture_*/*.md)
+do
+	lecNum=$(echo $i | cut -d'/' -f2)
+	cat $i | sed "s/\(<img.*\)src=\([\"\']\)\(raw\/\)*\([^ ]*\)/\1src=\2src\/$lecNum\/raw\/\4/g" | sed "s/<br>//g" >> COMP3131.md
+done
