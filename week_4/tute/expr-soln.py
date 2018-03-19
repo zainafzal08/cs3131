@@ -13,7 +13,16 @@ def breakExpr(e):
         return breakTerm(e)
 
 def breakTerm(e):
-    return 0
+    if "*" in e:
+        left = e.split("*")[0]
+        right = "*".join(e.split("*")[1:])
+        return breakTerm(left) * breakFactor(right)
+    elif "/" in e:
+        left = e.split("/")[0]
+        right = "*".join(e.split("/")[1:])
+        return breakTerm(left) / breakFactor(right)
+    else:
+        return breakFactor(e)
 
 def breakFactor(e):
     if re.match("^\d+$",e):
