@@ -75,6 +75,7 @@ class Recogniser():
         self.scanner = s
     def doTheThing(self):
         self.parseE()
+
     def parseE(self):
 
     def parseQ(self):

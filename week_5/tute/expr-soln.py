@@ -108,7 +108,7 @@ class Recogniser():
             return
         raise Exception("Unexpected Token of Type %s"%lh.type)
 
-s = Scanner("508-8*9-6")
+s = Scanner("508-8-*9-6")
 s.debug = True
 r = Recogniser(s)
 r.doTheThing()
