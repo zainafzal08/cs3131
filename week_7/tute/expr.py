@@ -28,11 +28,15 @@ class binaryExpr():
 l = Token("NUM","1.0",True)
 o = Token("DIVIDE","/",False)
 r = Token("NUM","1.8",True)
+
 le = binaryExpr(l,o,r)
+
 l2 = Token("NUM","2",False)
 o2 = Token("DIVIDE","/",False)
 r2 = Token("NUM","1",False)
+
 re = binaryExpr(l2,o2,r2)
+
 o3 = Token("DIVIDE","/",False)
 e = binaryExpr(le,o3,re)
 print(e.show())
